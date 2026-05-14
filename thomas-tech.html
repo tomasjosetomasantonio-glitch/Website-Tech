@@ -1,0 +1,3529 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Thomas Tech — Transformando ideias em soluções digitais inteligentes. Desenvolvimento de sistemas, websites, design e consultoria tecnológica.">
+  <meta name="keywords"
+    content="Thomas Tech, desenvolvimento web, sistemas de gestão, design gráfico, consultoria TI, Moçambique">
+  <title>Thomas Tech — Soluções Digitais Inteligentes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===========================
+   CSS CUSTOM PROPERTIES
+=========================== */
+    :root {
+      --bg-primary: #050810;
+      --bg-secondary: #0a0f1e;
+      --bg-card: #0d1424;
+      --bg-card-hover: #111b30;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-accent: rgba(56, 139, 253, 0.3);
+      --text-primary: #f0f4ff;
+      --text-secondary: #8b9ab5;
+      --text-muted: #4a5568;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --accent-neon: #06b6d4;
+      --neon-glow: rgba(6, 182, 212, 0.12);
+      --gradient-hero: linear-gradient(135deg, #050810 0%, #0a0f1e 50%, #050810 100%);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-card: 0 4px 40px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.08);
+    }
+
+    /* ===========================
+   RESET & BASE
+=========================== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    /* ===========================
+   SCROLLBAR
+=========================== */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* ===========================
+   UTILITY CLASSES
+=========================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container-wide {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-sm {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-bright);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .section-title span {
+      color: var(--accent-bright);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* ===========================
+   ANIMATIONS
+=========================== */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes glow-rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes counter-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slide-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes grid-fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: -200% center;
+      }
+
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes scan-line {
+      0% {
+        top: -10%;
+      }
+
+      100% {
+        top: 110%;
+      }
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    /* ===========================
+   NOISE OVERLAY
+=========================== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ===========================
+   NAVBAR
+=========================== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      padding: 14px 0;
+      background: rgba(5, 8, 16, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-neon));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+    }
+
+    .logo-text {
+      color: var(--text-primary);
+    }
+
+    .logo-text span {
+      color: var(--accent-bright);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-bright);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 8, 16, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--text-primary);
+    }
+
+    /* ===========================
+   HERO SECTION
+=========================== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 100px;
+    }
+
+    /* Background grid */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+      bottom: 100px;
+      left: -100px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+      top: 50%;
+      left: 40%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent-bright);
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      animation: fade-in-up 0.8s ease forwards;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent-bright);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      animation: fade-in-up 0.8s 0.1s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-title-line2 {
+      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 44px;
+      max-width: 520px;
+      animation: fade-in-up 0.8s 0.2s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fade-in-up 0.8s 0.3s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      animation: fade-in-up 0.8s 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-stat-item {}
+
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 520px;
+      animation: float 7s ease-in-out infinite;
+      opacity: 0;
+      animation: fade-in-up 1s 0.5s ease forwards, float 7s 1.5s ease-in-out infinite;
+    }
+
+    .dashboard-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card), 0 0 80px rgba(59, 130, 246, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+    }
+
+    /* Scan line effect */
+    .dashboard-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(transparent, rgba(59, 130, 246, 0.03), transparent);
+      animation: scan-line 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .db-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .db-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .db-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .db-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .db-dot:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .db-dot:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .db-dot:nth-child(3) {
+      background: #28c840;
+    }
+
+    .db-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .db-metric {
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.1);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .db-metric-val {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .db-metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .db-metric-trend {
+      font-size: 0.72rem;
+      color: #22c55e;
+      margin-top: 4px;
+    }
+
+    /* Bar chart */
+    .db-chart {
+      margin-bottom: 20px;
+    }
+
+    .db-chart-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .db-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      height: 70px;
+    }
+
+    .db-bar-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .db-bar {
+      width: 100%;
+      background: linear-gradient(to top, var(--accent), rgba(59, 130, 246, 0.3));
+      border-radius: 4px 4px 0 0;
+      transition: height 0.5s ease;
+    }
+
+    .db-bar-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* Activity list */
+    .db-activity {}
+
+    .db-activity-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .db-activity-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .db-activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .db-activity-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .db-activity-text {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .db-activity-time {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Floating mini cards */
+    .mini-card {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow-card);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .mini-card-1 {
+      top: -20px;
+      left: -80px;
+      animation-delay: -2s;
+    }
+
+    .mini-card-2 {
+      bottom: 40px;
+      right: -70px;
+      animation-delay: -4s;
+    }
+
+    .mini-card-title {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .mini-card-val {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #22c55e;
+    }
+
+    /* ===========================
+   ABOUT SECTION
+=========================== */
+    #about {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card-stack {
+      position: relative;
+      height: 400px;
+    }
+
+    .about-main-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      height: 300px;
+    }
+
+    .about-main-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), transparent, rgba(6, 182, 212, 0.2));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
+
+    .mission-list {
+      margin-top: -16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .mission-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .mission-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .mission-text strong {
+      color: var(--text-primary);
+    }
+
+    .about-sub-card {
+      position: absolute;
+      bottom: -150px;
+      right: -20px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.08));
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      width: 200px;
+    }
+
+    .about-sub-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .about-sub-val {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-bright);
+    }
+
+    .about-sub-desc {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .value-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .value-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .value-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* ===========================
+   SERVICES SECTION
+=========================== */
+    #services {}
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(59, 130, 246, 0.06);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card.featured {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(6, 182, 212, 0.04) 100%);
+      border-color: rgba(59, 130, 246, 0.2);
+      grid-column: span 1;
+    }
+
+    .service-card.featured::after {
+      content: 'Popular';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--accent-bright);
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .service-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .service-icon-wrap.blue {
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .service-icon-wrap.cyan {
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .service-icon-wrap.purple {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .service-icon-wrap.green {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.825rem;
+      color: var(--text-secondary);
+    }
+
+    .service-feature::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.5 4L6 11.5 2.5 8' stroke='%2360a5fa' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    .service-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.825rem;
+      font-weight: 500;
+      color: var(--accent-bright);
+      margin-top: 20px;
+      transition: gap 0.2s;
+    }
+
+    .service-card:hover .service-arrow {
+      gap: 10px;
+    }
+
+    /* ===========================
+   PORTFOLIO SECTION
+=========================== */
+    #portfolio {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .portfolio-filters {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.825rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: var(--text-primary);
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      group: true;
+    }
+
+    .portfolio-item:nth-child(1) {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .portfolio-mock {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item:hover .portfolio-mock {
+      transform: scale(1.03);
+    }
+
+    /* Mock screens for portfolio */
+    .mock-screen {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-screen-1 {
+      background: linear-gradient(135deg, #0d1424 0%, #111b30 100%);
+    }
+
+    .mock-screen-2 {
+      background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+    }
+
+    .mock-screen-3 {
+      background: linear-gradient(135deg, #0a1020 0%, #0f1a2d 100%);
+    }
+
+    .mock-screen-4 {
+      background: linear-gradient(135deg, #080e1a 0%, #0d1624 100%);
+    }
+
+    .mock-screen-5 {
+      background: linear-gradient(135deg, #0b1422 0%, #111e32 100%);
+    }
+
+    .mock-topbar {
+      height: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+
+    .mock-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .mock-dot-r {
+      background: rgba(255, 95, 87, 0.6);
+    }
+
+    .mock-dot-y {
+      background: rgba(254, 188, 46, 0.6);
+    }
+
+    .mock-dot-g {
+      background: rgba(40, 200, 64, 0.6);
+    }
+
+    .mock-url {
+      flex: 1;
+      height: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      margin: 0 12px;
+    }
+
+    .mock-sidebar {
+      width: 48px;
+      background: rgba(255, 255, 255, 0.02);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+    }
+
+    .mock-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .mock-content {
+      flex: 1;
+      padding: 12px;
+      overflow: hidden;
+    }
+
+    .mock-chart-area {
+      width: 100%;
+      height: 80px;
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mock-chart-line {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .mock-line-1 {
+      background: linear-gradient(90deg, transparent, #3b82f6, #60a5fa, #3b82f6, transparent);
+      clip-path: polygon(0 60%, 15% 20%, 30% 40%, 50% 10%, 70% 30%, 85% 5%, 100% 20%, 100% 100%, 0 100%);
+      height: 100%;
+    }
+
+    .mock-cards-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mock-mini-card {
+      flex: 1;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+    }
+
+    .mock-table {
+      margin-top: 8px;
+    }
+
+    .mock-table-row {
+      height: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+
+    .mock-table-row:nth-child(1) {
+      width: 90%;
+    }
+
+    .mock-table-row:nth-child(2) {
+      width: 75%;
+    }
+
+    .mock-table-row:nth-child(3) {
+      width: 85%;
+    }
+
+    /* Website mock */
+    .mock-hero-block {
+      height: 45%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.05));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      gap: 8px;
+    }
+
+    .mock-hero-text {
+      flex: 1;
+    }
+
+    .mock-h1 {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      margin-bottom: 6px;
+    }
+
+    .mock-h2 {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      width: 70%;
+    }
+
+    .mock-btn-fake {
+      height: 22px;
+      width: 60px;
+      background: #3b82f6;
+      border-radius: 5px;
+      margin-top: 8px;
+    }
+
+    .mock-hero-img {
+      width: 80px;
+      height: 60px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 6px;
+    }
+
+    /* Portfolio overlay */
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 8, 16, 0.9) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-info {}
+
+    .portfolio-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-bright);
+      margin-bottom: 4px;
+    }
+
+    .portfolio-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* ===========================
+   STATS SECTION
+=========================== */
+    #stats {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(6, 182, 212, 0.03) 100%);
+      border-top: 1px solid rgba(59, 130, 246, 0.1);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* ===========================
+   PROCESS SECTION
+=========================== */
+    #process {}
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .process-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(10% + 20px);
+      right: calc(10% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), var(--border-accent), var(--border));
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+    }
+
+    .process-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+    }
+
+    .process-step:hover .process-num {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+    }
+
+    .process-step-icon {
+      font-size: 1.5rem;
+    }
+
+    .process-step-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .process-step-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ===========================
+   TESTIMONIALS
+=========================== */
+    #testimonials {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial-card.featured {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.07), rgba(6, 182, 212, 0.04));
+      border-color: rgba(59, 130, 246, 0.15);
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      margin-bottom: -10px;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .av-blue {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    .av-cyan {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+    }
+
+    .av-purple {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+
+    .author-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+    }
+
+    /* ===========================
+   CTA SECTION
+=========================== */
+    #cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    }
+
+    .cta-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 24px;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .cta-title span {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-large {
+      padding: 18px 36px;
+      font-size: 1rem;
+    }
+
+    .btn-glow {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.3), 0 0 80px rgba(59, 130, 246, 0.1);
+    }
+
+    /* ===========================
+   CONTACT SECTION
+=========================== */
+    #contact {}
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info {}
+
+    .contact-details {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-icon-wrap {
+      width: 44px;
+      height: 44px;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-item-val {
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    .contact-item-val a {
+      transition: color 0.2s;
+    }
+
+    .contact-item-val a:hover {
+      color: var(--accent-bright);
+    }
+
+    .contact-socials {
+      margin-top: 36px;
+    }
+
+    .socials-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .socials-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-control::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-control:focus {
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
+    }
+
+    textarea.form-control {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: all 0.25s;
+      border: none;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: #2563eb;
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* ===========================
+   FOOTER
+=========================== */
+    #footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 64px;
+    }
+
+    .footer-brand {}
+
+    .footer-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-made {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-made span {
+      color: var(--accent-bright);
+    }
+
+    /* ===========================
+   WHATSAPP BUTTON
+=========================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 68px;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+    }
+
+    /* ===========================
+   RESPONSIVE
+=========================== */
+    @media (max-width: 1100px) {
+      .hero-visual {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-visual {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .portfolio-item:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .process-timeline::before {
+        display: none;
+      }
+
+      .process-step {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .process-num {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta .btn-outline {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-item:nth-child(1) {
+        grid-column: span 1;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* ===========================
+   SHIMMER LOADER EFFECT
+=========================== */
+    .shimmer-text {
+      background: linear-gradient(105deg,
+          var(--text-primary) 40%,
+          rgba(255, 255, 255, 0.8) 50%,
+          var(--text-primary) 60%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===========================
+   GRADIENT BORDERS
+=========================== */
+    .grad-border {
+      position: relative;
+    }
+
+    .grad-border::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), transparent, rgba(6, 182, 212, 0.3));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="logo">
+          <div class="static/logo.jpg" alt="Logo" style="width: 80px; height: 80px; object-fit: contain;"></div>
+          <div class="logo-text">Thomas<span>Tech</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#process">Processo</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="#contact" class="btn btn-outline">Orçamento</a>
+          <a href="https://wa.me/258834945482" class="btn btn-primary">Falar Connosco</a>
+        </div>
+        <div class="hamburger" id="hamburger" role="button" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">Sobre</a>
+    <a href="#services" class="mobile-link">Serviços</a>
+    <a href="#portfolio" class="mobile-link">Portfólio</a>
+    <a href="#process" class="mobile-link">Processo</a>
+    <a href="#contact" class="mobile-link">Contacto</a>
+    <a href="#contact" class="btn btn-primary">Solicitar Orçamento →</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Soluções digitais para o futuro do seu negócio
+        </div>
+        <h1 class="hero-title">
+          Transformamos negócios<br>
+          <span class="hero-title-line2">através da tecnologia.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Soluções digitais modernas para pequenas e médias empresas crescerem com eficiência, inovação e segurança.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-large">
+            Solicitar Orçamento
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#services" class="btn btn-outline btn-large">
+            Ver Serviços
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">22+</div>
+            <div class="hero-stat-label">Clientes atendidos</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">80+</div>
+            <div class="hero-stat-label">Projetos concluídos</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">58%</div>
+            <div class="hero-stat-label">Taxa de satisfação</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual: Dashboard -->
+    <div class="hero-visual"
+      style="position:absolute;right:5%;top:50%;transform:translateY(-50%);width:440px;z-index:2;">
+      <!-- Mini card top -->
+      <div
+        style="position:absolute;top:-16px;left:-80px;z-index:3;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;box-shadow:0 8px 30px rgba(0,0,0,0.3);animation:float 6s ease-in-out infinite;">
+        <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:4px;">Novo projeto</div>
+        <div style="font-family:var(--font-display);font-size:0.95rem;font-weight:700;color:#22c55e;">✓ Sistema entregue
+        </div>
+      </div>
+
+      <!-- Main Dashboard -->
+      <div class="dashboard-card grad-border">
+        <div class="db-header">
+          <div class="db-dots">
+            <div class="db-dot"></div>
+            <div class="db-dot"></div>
+            <div class="db-dot"></div>
+          </div>
+          <div class="db-title">Painel de Gestão — Thomas Tech</div>
+        </div>
+        <div class="db-metrics">
+          <div class="db-metric">
+            <div class="db-metric-val">58</div>
+            <div class="db-metric-label">Projectos Activos</div>
+            <div class="db-metric-trend">↑ +8% este mês</div>
+          </div>
+          <div class="db-metric">
+            <div class="db-metric-val">MT 82k</div>
+            <div class="db-metric-label">Receita Mensal</div>
+            <div class="db-metric-trend">↑ +5.4%</div>
+          </div>
+          <div class="db-metric">
+            <div class="db-metric-val">98%</div>
+            <div class="db-metric-label">Satisfação</div>
+            <div class="db-metric-trend">↑ Excelente</div>
+          </div>
+          <div class="db-metric">
+            <div class="db-metric-val">24h</div>
+            <div class="db-metric-label">Suporte</div>
+            <div class="db-metric-trend">● Online</div>
+          </div>
+        </div>
+        <div class="db-chart">
+          <div class="db-chart-title">Crescimento de Clientes — 2026</div>
+          <div class="db-bars">
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:45%"></div>
+              <div class="db-bar-label">Jan</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:55%"></div>
+              <div class="db-bar-label">Fev</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:48%"></div>
+              <div class="db-bar-label">Mar</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:70%"></div>
+              <div class="db-bar-label">Abr</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:65%"></div>
+              <div class="db-bar-label">Mai</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:85%"></div>
+              <div class="db-bar-label">Jun</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:78%"></div>
+              <div class="db-bar-label">Jul</div>
+            </div>
+            <div class="db-bar-wrap">
+              <div class="db-bar" style="height:100%"></div>
+              <div class="db-bar-label">Ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="db-activity">
+          <div class="db-activity-title">Actividade Recente</div>
+          <div class="db-activity-item">
+            <div class="db-activity-dot" style="background:#22c55e"></div>
+            <div class="db-activity-text">Sistema de gestão entregue</div>
+            <div class="db-activity-time">2min</div>
+          </div>
+          <div class="db-activity-item">
+            <div class="db-activity-dot" style="background:#3b82f6"></div>
+            <div class="db-activity-text">Website corporativo publicado</div>
+            <div class="db-activity-time">1h</div>
+          </div>
+          <div class="db-activity-item">
+            <div class="db-activity-dot" style="background:#f59e0b"></div>
+            <div class="db-activity-text">Proposta enviada ao cliente</div>
+            <div class="db-activity-time">3h</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini card bottom -->
+      <div
+        style="position:absolute;bottom:20px;right:-72px;z-index:3;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(6,182,212,0.08));border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.3);animation:float 8s ease-in-out infinite reverse;">
+        <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:4px;">Satisfação Global</div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--accent-bright);">98.7%
+        </div>
+        <div style="display:flex;gap:2px;margin-top:4px;">⭐⭐⭐⭐</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Visual Side -->
+        <div class="about-visual reveal">
+          <div class="about-card-stack">
+            <div class="about-main-card">
+              <div class="section-tag">Nossa Missão</div>
+              <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:16px;">Construir
+                o futuro digital<br>das empresas africanas.</h3>
+              <div class="mission-list">
+                <div class="mission-item">
+                  <div class="mission-icon">🎯</div>
+                  <div class="mission-text"><strong>Missão:</strong> Democratizar a tecnologia para pequenas e médias
+                    empresas com soluções acessíveis e de alta qualidade.</div>
+                </div>
+                <div class="mission-item">
+                  <div class="mission-icon">🔭</div>
+                  <div class="mission-text"><strong>Visão:</strong> Ser a empresa tecnológica de referência em
+                    Moçambique, reconhecida pela excelência e inovação.</div>
+                </div>
+                <div class="mission-item">
+                  <div class="mission-icon">💡</div>
+                  <div class="mission-text"><strong>Valores:</strong> Inovação, integridade, comprometimento e foco
+                    total no sucesso do cliente.</div>
+                </div>
+              </div>
+            </div>
+            <div class="about-sub-card">
+              <div class="about-sub-title">Fundada em</div>
+              <div class="about-sub-val">2023</div>
+              <div class="about-sub-desc">Anos de experiência em soluções digitais</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Side -->
+        <div class="reveal reveal-delay-2">
+          <div class="section-tag">Sobre a Thomas Tech</div>
+          <h2 class="section-title">
+            Tecnologia que<br>
+            <span>impulsiona resultados</span>
+          </h2>
+          <p class="section-subtitle" style="margin-bottom:32px;">
+            Somos uma empresa moçambicana de tecnologia comprometida em transformar negócios através de soluções
+            digitais sob medida. Combinamos inovação, expertise técnico e profundo conhecimento do mercado local.
+          </p>
+
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon">⚡</div>
+              <div class="value-name">Soluções Modernas</div>
+              <div class="value-desc">Tecnologia de ponta adaptada à realidade do mercado local.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">🤝</div>
+              <div class="value-name">Atendimento Personalizado</div>
+              <div class="value-desc">Cada cliente recebe atenção única e dedicada.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">🛠️</div>
+              <div class="value-name">Desenvolvimento Sob Medida</div>
+              <div class="value-desc">Sistemas criados especificamente para o seu negócio.</div>
+            </div>
+            <div class="value-card">
+              <div class="value-icon">🔧</div>
+              <div class="value-name">Suporte Contínuo</div>
+              <div class="value-desc">Assistência técnica permanente após a entrega.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="section" style="background:var(--bg-primary);">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-tag">O que oferecemos</div>
+        <h2 class="section-title">Serviços que <span>transformam</span><br>o seu negócio</h2>
+        <p class="section-subtitle">
+          Uma suite completa de serviços tecnológicos para levar a sua empresa ao próximo nível digital.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1: Dev Sistemas -->
+        <div class="service-card featured reveal reveal-delay-1" id="scard1">
+          <div class="service-icon-wrap blue">💻</div>
+          <h3 class="service-title">Desenvolvimento de Sistemas</h3>
+          <p class="service-desc">Criamos sistemas de gestão empresarial personalizados que automatizam processos,
+            aumentam a produtividade e fornecem inteligência de negócio em tempo real.</p>
+          <div class="service-features">
+            <div class="service-feature">Sistemas de gestão empresarial</div>
+            <div class="service-feature">Controlo financeiro e contabilidade</div>
+            <div class="service-feature">Gestão de stock e inventário</div>
+            <div class="service-feature">Relatórios e dashboards inteligentes</div>
+          </div>
+          <div class="service-arrow">Saiba mais →</div>
+        </div>
+
+        <!-- Service 2: Web -->
+        <div class="service-card reveal reveal-delay-2" id="scard2">
+          <div class="service-icon-wrap cyan">🌐</div>
+          <h3 class="service-title">Desenvolvimento Web</h3>
+          <p class="service-desc">Websites profissionais de alto impacto que convertem visitantes em clientes. Design
+            moderno, performance optimizada e experiência de utilizador excecional.</p>
+          <div class="service-features">
+            <div class="service-feature">Websites corporativos premium</div>
+            <div class="service-feature">Landing pages de alta conversão</div>
+            <div class="service-feature">Lojas online e e-commerce</div>
+            <div class="service-feature">Portais e plataformas web</div>
+          </div>
+          <div class="service-arrow">Saiba mais →</div>
+        </div>
+
+        <!-- Service 3: Design -->
+        <div class="service-card reveal reveal-delay-3" id="scard3">
+          <div class="service-icon-wrap purple">🎨</div>
+          <h3 class="service-title">Design Gráfico</h3>
+          <p class="service-desc">Identidade visual que comunica profissionalismo e confiança. Da concepção à entrega,
+            criamos materiais que diferenciam a sua marca no mercado.</p>
+          <div class="service-features">
+            <div class="service-feature">Logótipos e identidade visual</div>
+            <div class="service-feature">Branding completo</div>
+            <div class="service-feature">Materiais gráficos e flyers</div>
+            <div class="service-feature">Gestão de social media</div>
+          </div>
+          <div class="service-arrow">Saiba mais →</div>
+        </div>
+
+        <!-- Service 4: Soluções IT -->
+        <div class="service-card reveal reveal-delay-4" id="scard4">
+          <div class="service-icon-wrap green">🔌</div>
+          <h3 class="service-title">Soluções Informáticas & Consultoria</h3>
+          <p class="service-desc">Infraestrutura tecnológica sólida e consultoria especializada para modernizar a
+            operação da sua empresa com segurança e eficiência máxima.</p>
+          <div class="service-features">
+            <div class="service-feature">Instalação e configuração de redes</div>
+            <div class="service-feature">Manutenção de hardware e software</div>
+            <div class="service-feature">Consultoria TI estratégica</div>
+            <div class="service-feature">Automação de processos empresariais</div>
+          </div>
+          <div class="service-arrow">Saiba mais →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="portfolio-header reveal">
+        <div class="section-tag">O nosso trabalho</div>
+        <h2 class="section-title">Projectos que <span>falam</span><br>por si mesmos</h2>
+        <div class="portfolio-filters">
+          <button class="filter-btn active">Todos</button>
+          <button class="filter-btn">Sistemas</button>
+          <button class="filter-btn">Websites</button>
+          <button class="filter-btn">Design</button>
+        </div>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- Item 1: Big -->
+        <div class="portfolio-item reveal">
+          <div class="portfolio-mock">
+            <div class="mock-screen mock-screen-1" style="display:flex;flex-direction:column;">
+              <div class="mock-topbar">
+                <div class="mock-dot mock-dot-r"></div>
+                <div class="mock-dot mock-dot-y"></div>
+                <div class="mock-dot mock-dot-g"></div>
+                <div class="mock-url"></div>
+              </div>
+              <div class="mock-body" style="flex:1;">
+                <div class="mock-sidebar" style="padding:12px 8px;display:flex;flex-direction:column;gap:8px;">
+                  <div style="height:28px;background:rgba(59,130,246,0.2);border-radius:6px;"></div>
+                  <div style="height:28px;background:rgba(255,255,255,0.04);border-radius:6px;"></div>
+                  <div style="height:28px;background:rgba(255,255,255,0.04);border-radius:6px;"></div>
+                  <div style="height:28px;background:rgba(255,255,255,0.04);border-radius:6px;"></div>
+                  <div style="height:28px;background:rgba(255,255,255,0.04);border-radius:6px;"></div>
+                </div>
+                <div class="mock-content">
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+                    <div
+                      style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:10px;">
+                      <div style="font-size:10px;color:var(--text-muted);">Receita</div>
+                      <div
+                        style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-primary);margin-top:2px;">
+                        MT 45k</div>
+                      <div style="font-size:9px;color:#22c55e;">↑ +12%</div>
+                    </div>
+                    <div
+                      style="background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.12);border-radius:8px;padding:10px;">
+                      <div style="font-size:10px;color:var(--text-muted);">Clientes</div>
+                      <div
+                        style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-primary);margin-top:2px;">
+                        284</div>
+                      <div style="font-size:9px;color:#22c55e;">↑ +5%</div>
+                    </div>
+                    <div
+                      style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.12);border-radius:8px;padding:10px;">
+                      <div style="font-size:10px;color:var(--text-muted);">Stock</div>
+                      <div
+                        style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-primary);margin-top:2px;">
+                        1,492</div>
+                      <div style="font-size:9px;color:#f59e0b;">● Em stock</div>
+                    </div>
+                    <div
+                      style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.12);border-radius:8px;padding:10px;">
+                      <div style="font-size:10px;color:var(--text-muted);">Pedidos</div>
+                      <div
+                        style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--text-primary);margin-top:2px;">
+                        37</div>
+                      <div style="font-size:9px;color:#22c55e;">● Activos</div>
+                    </div>
+                  </div>
+                  <div class="mock-chart-area"
+                    style="height:60px;margin-bottom:12px;background:rgba(59,130,246,0.04);border-radius:8px;overflow:hidden;position:relative;">
+                    <svg width="100%" height="100%" viewBox="0 0 400 60" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="rgba(59,130,246,0.3)" />
+                          <stop offset="100%" stop-color="rgba(59,130,246,0)" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M0,55 L50,40 L100,45 L150,25 L200,30 L250,15 L300,20 L350,8 L400,12" stroke="#3b82f6"
+                        stroke-width="2" fill="none" />
+                      <path d="M0,55 L50,40 L100,45 L150,25 L200,30 L250,15 L300,20 L350,8 L400,12 L400,60 L0,60"
+                        fill="url(#lineGrad)" />
+                    </svg>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:4px;">
+                    <div
+                      style="display:flex;gap:8px;align-items:center;padding:6px;background:rgba(255,255,255,0.02);border-radius:4px;">
+                      <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;"></div>
+                      <div style="font-size:9px;color:var(--text-secondary);flex:1;">Venda concluída - Cliente A</div>
+                      <div style="font-size:9px;color:var(--text-muted);">MT 2,500</div>
+                    </div>
+                    <div
+                      style="display:flex;gap:8px;align-items:center;padding:6px;background:rgba(255,255,255,0.02);border-radius:4px;">
+                      <div style="width:6px;height:6px;border-radius:50%;background:#3b82f6;flex-shrink:0;"></div>
+                      <div style="font-size:9px;color:var(--text-secondary);flex:1;">Novo registo de stock</div>
+                      <div style="font-size:9px;color:var(--text-muted);">50 un.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Sistema de Gestão</div>
+              <div class="portfolio-name">GestPro — Plataforma de Gestão Empresarial</div>
+              <div class="portfolio-link">Ver detalhes →</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="portfolio-item reveal reveal-delay-1">
+          <div class="portfolio-mock">
+            <div class="mock-screen mock-screen-2" style="display:flex;flex-direction:column;">
+              <div class="mock-topbar">
+                <div class="mock-dot mock-dot-r"></div>
+                <div class="mock-dot mock-dot-y"></div>
+                <div class="mock-dot mock-dot-g"></div>
+                <div class="mock-url"></div>
+              </div>
+              <div class="mock-hero-block">
+                <div class="mock-hero-text">
+                  <div class="mock-h1" style="width:85%;"></div>
+                  <div class="mock-h2"></div>
+                  <div class="mock-btn-fake"></div>
+                </div>
+                <div class="mock-hero-img"></div>
+              </div>
+              <div style="padding:12px;display:flex;flex-direction:column;gap:6px;flex:1;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                  <div
+                    style="height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;">
+                  </div>
+                  <div
+                    style="height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;">
+                  </div>
+                  <div
+                    style="height:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;">
+                  </div>
+                </div>
+                <div style="height:12px;background:rgba(255,255,255,0.04);border-radius:3px;width:80%;margin-top:4px;">
+                </div>
+                <div style="height:12px;background:rgba(255,255,255,0.03);border-radius:3px;width:60%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Website Corporativo</div>
+              <div class="portfolio-name">Portal Empresarial Premium</div>
+              <div class="portfolio-link">Ver detalhes →</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="portfolio-item reveal reveal-delay-2">
+          <div class="portfolio-mock">
+            <div class="mock-screen mock-screen-3"
+              style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:12px;">
+              <div
+                style="width:70px;height:70px;background:linear-gradient(135deg,#3b82f6,#06b6d4);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:white;font-family:var(--font-display);">
+                T</div>
+              <div style="height:10px;background:rgba(255,255,255,0.15);border-radius:3px;width:70%;"></div>
+              <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:3px;width:50%;"></div>
+              <div style="display:flex;gap:8px;margin-top:8px;">
+                <div
+                  style="width:40px;height:40px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:8px;">
+                </div>
+                <div
+                  style="width:40px;height:40px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);border-radius:8px;">
+                </div>
+                <div
+                  style="width:40px;height:40px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:8px;">
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+                <div style="height:22px;width:60px;background:rgba(255,255,255,0.04);border-radius:4px;"></div>
+                <div style="height:22px;width:50px;background:rgba(255,255,255,0.04);border-radius:4px;"></div>
+                <div
+                  style="height:22px;width:70px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);border-radius:4px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Design Gráfico</div>
+              <div class="portfolio-name">Identidade Visual Completa</div>
+              <div class="portfolio-link">Ver detalhes →</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="portfolio-item reveal reveal-delay-1">
+          <div class="portfolio-mock">
+            <div class="mock-screen mock-screen-4" style="display:flex;flex-direction:column;">
+              <div class="mock-topbar">
+                <div class="mock-dot mock-dot-r"></div>
+                <div class="mock-dot mock-dot-y"></div>
+                <div class="mock-dot mock-dot-g"></div>
+                <div class="mock-url"></div>
+              </div>
+              <div style="flex:1;padding:12px;overflow:hidden;">
+                <div
+                  style="height:12px;background:rgba(59,130,246,0.15);border-radius:3px;width:50%;margin-bottom:12px;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                  <div
+                    style="padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;">
+                    <div style="font-size:9px;color:var(--text-muted);margin-bottom:3px;">Total Entradas</div>
+                    <div style="font-size:13px;font-weight:700;color:#22c55e;">MT 12,500</div>
+                  </div>
+                  <div
+                    style="padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;">
+                    <div style="font-size:9px;color:var(--text-muted);margin-bottom:3px;">Total Saídas</div>
+                    <div style="font-size:13px;font-weight:700;color:#f87171;">MT 3,200</div>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:5px;">
+                  <div
+                    style="display:flex;align-items:center;gap:8px;padding:6px;background:rgba(34,197,94,0.04);border-radius:5px;">
+                    <div style="width:5px;height:5px;border-radius:50%;background:#22c55e;"></div>
+                    <div style="font-size:9px;color:var(--text-secondary);flex:1;">Depósito bancário</div>
+                    <div style="font-size:9px;font-weight:600;color:#22c55e;">+MT 5,000</div>
+                  </div>
+                  <div
+                    style="display:flex;align-items:center;gap:8px;padding:6px;background:rgba(248,113,113,0.04);border-radius:5px;">
+                    <div style="width:5px;height:5px;border-radius:50%;background:#f87171;"></div>
+                    <div style="font-size:9px;color:var(--text-secondary);flex:1;">Pagamento fornecedor</div>
+                    <div style="font-size:9px;font-weight:600;color:#f87171;">-MT 800</div>
+                  </div>
+                  <div
+                    style="display:flex;align-items:center;gap:8px;padding:6px;background:rgba(34,197,94,0.04);border-radius:5px;">
+                    <div style="width:5px;height:5px;border-radius:50%;background:#22c55e;"></div>
+                    <div style="font-size:9px;color:var(--text-secondary);flex:1;">Recebimento cliente</div>
+                    <div style="font-size:9px;font-weight:600;color:#22c55e;">+MT 2,500</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Sistema Financeiro</div>
+              <div class="portfolio-name">FinControl — Gestão Financeira</div>
+              <div class="portfolio-link">Ver detalhes →</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="portfolio-item reveal reveal-delay-2">
+          <div class="portfolio-mock">
+            <div class="mock-screen mock-screen-5" style="display:flex;flex-direction:column;padding:16px;gap:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+                <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:3px;width:40%;"></div>
+                <div style="height:20px;width:50px;background:#3b82f6;border-radius:5px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;">
+                <div
+                  style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">
+                  <div
+                    style="height:50%;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(6,182,212,0.08));">
+                  </div>
+                  <div style="padding:8px;">
+                    <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;">
+                    </div>
+                    <div style="height:7px;background:rgba(255,255,255,0.04);border-radius:2px;width:70%;"></div>
+                  </div>
+                </div>
+                <div
+                  style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">
+                  <div
+                    style="height:50%;background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(59,130,246,0.06));">
+                  </div>
+                  <div style="padding:8px;">
+                    <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;">
+                    </div>
+                    <div style="height:7px;background:rgba(255,255,255,0.04);border-radius:2px;width:60%;"></div>
+                  </div>
+                </div>
+                <div
+                  style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">
+                  <div style="height:50%;background:linear-gradient(135deg,rgba(34,197,94,0.1),rgba(6,182,212,0.06));">
+                  </div>
+                  <div style="padding:8px;">
+                    <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;">
+                    </div>
+                    <div style="height:7px;background:rgba(255,255,255,0.04);border-radius:2px;width:80%;"></div>
+                  </div>
+                </div>
+                <div
+                  style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;">
+                  <div
+                    style="height:50%;background:linear-gradient(135deg,rgba(251,191,36,0.1),rgba(249,115,22,0.06));">
+                  </div>
+                  <div style="padding:8px;">
+                    <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:4px;">
+                    </div>
+                    <div style="height:7px;background:rgba(255,255,255,0.04);border-radius:2px;width:65%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-info">
+              <div class="portfolio-tag">Loja Online</div>
+              <div class="portfolio-name">Catálogo Digital com E-commerce</div>
+              <div class="portfolio-link">Ver detalhes →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section id="stats" class="section-sm">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num" data-target="50">0+</div>
+          <div class="stat-label">Clientes atendidos</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num" data-target="80">0+</div>
+          <div class="stat-label">Projectos concluídos</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num" data-target="30">0+</div>
+          <div class="stat-label">Sistemas desenvolvidos</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num" data-target="98">0%</div>
+          <div class="stat-label">Taxa de satisfação</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section id="process" class="section"
+    style="background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="section-tag">Como trabalhamos</div>
+        <h2 class="section-title">Processo <span>simples</span>, resultado <span>extraordinário</span></h2>
+        <p class="section-subtitle" style="margin:0 auto;">
+          Um método de trabalho estruturado que garante qualidade, prazo e transparência em cada projecto.
+        </p>
+      </div>
+
+      <div class="process-timeline">
+        <div class="process-step reveal">
+          <div class="process-num">
+            <span class="process-step-icon">📋</span>
+          </div>
+          <div>
+            <div class="process-step-title">01. Planejamento</div>
+            <div class="process-step-desc">Reunião inicial, levantamento de requisitos e definição do escopo do
+              projecto.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">
+            <span class="process-step-icon">⚙️</span>
+          </div>
+          <div>
+            <div class="process-step-title">02. Desenvolvimento</div>
+            <div class="process-step-desc">Criação da solução com tecnologia moderna e foco na experiência do
+              utilizador.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">
+            <span class="process-step-icon">🧪</span>
+          </div>
+          <div>
+            <div class="process-step-title">03. Testes</div>
+            <div class="process-step-desc">Validação rigorosa de funcionalidade, segurança e performance.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">
+            <span class="process-step-icon">🚀</span>
+          </div>
+          <div>
+            <div class="process-step-title">04. Entrega</div>
+            <div class="process-step-desc">Lançamento, formação da equipa e acompanhamento na fase de arranque.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">
+            <span class="process-step-icon">🔧</span>
+          </div>
+          <div>
+            <div class="process-step-title">05. Suporte</div>
+            <div class="process-step-desc">Assistência contínua, actualizações e melhorias ao longo do tempo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-tag">O que dizem os clientes</div>
+        <h2 class="section-title">Resultados que <span>falam</span><br>por si mesmos</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card featured reveal">
+          <div class="stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">
+            A Thomas Tech transformou completamente a nossa gestão. O sistema que desenvolveram reduziu o tempo
+            administrativo em 60% e dá-nos uma visão clara do negócio em tempo real. Investimento que se pagou logo no
+            primeiro mês.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-blue">JM</div>
+            <div>
+              <div class="author-name">João Machava</div>
+              <div class="author-role">Director, Supermercado Maputo Sul</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">
+            Profissionalismo de outro nível. O website que criaram para a nossa clínica atrai novos pacientes todos os
+            dias. O design é moderno, carrega rápido e funciona perfeitamente no telemóvel. Recomendo a 100%.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-cyan">AS</div>
+            <div>
+              <div class="author-name">Ana Sitoe</div>
+              <div class="author-role">Directora, Clínica Vida Saudável</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">
+            Precisávamos de um sistema de controlo financeiro e a Thomas Tech entregou algo que superou todas as
+            expectativas. Suporte rápido, equipa dedicada e solução feita à medida do nosso negócio.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-purple">CM</div>
+            <div>
+              <div class="author-name">Carlos Mutemba</div>
+              <div class="author-role">CEO, Construtora M&M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section id="cta">
+    <div class="cta-bg"></div>
+    <div class="cta-grid-bg"></div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <div class="cta-tag">✦ Pronto para começar?</div>
+        <h2 class="cta-title">
+          Pronto para modernizar<br>
+          <span>o seu negócio?</span>
+        </h2>
+        <p class="cta-subtitle">
+          Junte-se a dezenas de empresas que já transformaram a sua operação com as soluções da Thomas Tech.
+        </p>
+        <div class="cta-actions">
+          <a href="https://wa.me/258834945482" class="btn btn-primary btn-large btn-glow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Falar com a Thomas Tech
+          </a>
+          <a href="#contact" class="btn btn-outline btn-large">Enviar mensagem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Info -->
+        <div class="reveal">
+          <div class="section-tag">Contacto</div>
+          <h2 class="section-title">Vamos <span>conversar</span><br>sobre o seu projecto</h2>
+          <p class="section-subtitle">
+            Estamos prontos para ouvir as suas necessidades e apresentar a melhor solução para o seu negócio.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon-wrap">📱</div>
+              <div>
+                <div class="contact-item-label">WhatsApp / Telemóvel</div>
+                <div class="contact-item-val"><a href="https://wa.me/258834945482">+258 83 494 5482</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">✉️</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-val"><a href="mailto:geral@thomastech.co.mz">geral@thomastech.co.mz</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">📍</div>
+              <div>
+                <div class="contact-item-label">Localização</div>
+                <div class="contact-item-val">Tete, Moçambique</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">🕐</div>
+              <div>
+                <div class="contact-item-label">Horário</div>
+                <div class="contact-item-val">Seg–Sex: 8h–18h | Sáb: 8h–13h</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <div class="socials-label">Redes Sociais</div>
+            <div class="socials-row">
+              <div class="social-btn" title="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </div>
+              <div class="social-btn" title="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+              </div>
+              <div class="social-btn" title="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </div>
+              <div class="social-btn" title="Twitter/X">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-title">Enviar Mensagem</div>
+          <div class="form-subtitle">Preencha o formulário e responderemos em menos de 24 horas.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nome">Nome completo *</label>
+              <input class="form-control" type="text" id="nome" placeholder="O seu nome">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="empresa">Empresa</label>
+              <input class="form-control" type="text" id="empresa" placeholder="Nome da sua empresa">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email *</label>
+            <input class="form-control" type="email" id="email" placeholder="usuario@empresa.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefone">Telefone / WhatsApp</label>
+            <input class="form-control" type="tel" id="telefone" placeholder="+258000000000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="servico">Serviço de interesse</label>
+            <select class="form-control" id="servico" style="appearance:none;cursor:pointer;">
+              <option value="" disabled selected>Seleccione um serviço</option>
+              <option>Desenvolvimento de Sistemas</option>
+              <option>Desenvolvimento Web</option>
+              <option>Design Gráfico</option>
+              <option>Soluções Informáticas</option>
+              <option>Consultoria Tecnológica</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mensagem">Mensagem *</label>
+            <textarea class="form-control" id="mensagem"
+              placeholder="Descreva o seu projecto ou necessidade..."></textarea>
+          </div>
+          <button class="form-submit" onclick="handleFormSubmit(this)">
+            Enviar Mensagem →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">T</div>
+            <div class="logo-text">Thomas<span>Tech</span></div>
+          </a>
+          <p class="footer-desc">
+            Transformando ideias em soluções digitais inteligentes. A sua empresa tecnológica de confiança em
+            Moçambique.
+          </p>
+          <div class="socials-row" style="margin-top:20px;">
+            <div class="social-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </div>
+            <div class="social-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg>
+            </div>
+            <div class="social-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#process">Como Trabalhamos</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#testimonials">Testemunhos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Serviços</div>
+          <ul class="footer-links">
+            <li><a href="#services">Sistemas de Gestão</a></li>
+            <li><a href="#services">Desenvolvimento Web</a></li>
+            <li><a href="#services">Design Gráfico</a></li>
+            <li><a href="#services">Soluções Informáticas</a></li>
+            <li><a href="#services">Consultoria TI</a></li>
+            <li><a href="#services">Automação Empresarial</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Contacto Rápido</div>
+          <ul class="footer-links">
+            <li style="color:var(--text-secondary);font-size:0.85rem;">📍 Tete, Moçambique</li>
+            <li><a href="tel:+258869276546">📞 +258 86 927 6546</a></li>
+            <li><a href="mailto:tomaztech@thomastech.co.mz">✉️ tomaztech@thomastech.co.mz</a></li>
+            <li style="color:var(--text-secondary);font-size:0.85rem;">🕐 Seg–Sex: 8h–18h</li>
+          </ul>
+          <a href="https://wa.me/258834945482" class="btn btn-primary"
+            style="margin-top:20px;font-size:0.8rem;padding:10px 18px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Thomas Tech. Todos os direitos reservados.</div>
+        <div class="footer-made">Desenvolvido com ♥ por <span>Tomas Jose</span> — Tete, Moçambique</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/258834945482" class="whatsapp-float" target="_blank" rel="noopener" title="WhatsApp">
+    <div class="whatsapp-tooltip">Fale connosco agora!</div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  </a>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ---- Navbar scroll effect ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ---- Mobile Menu ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ---- Scroll Reveal ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ---- Stats Counter ----
+    function animateCounter(el, target, suffix) {
+      const duration = 2000;
+      const start = performance.now();
+      const step = (timestamp) => {
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          const suffix = el.textContent.includes('%') ? '%' : '+';
+          animateCounter(el, target, suffix);
+          statsObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => statsObserver.observe(el));
+
+    // ---- Service card mouse glow ----
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--x', x + '%');
+        card.style.setProperty('--y', y + '%');
+      });
+    });
+
+    // ---- Portfolio filter buttons ----
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // ---- Form submit ----
+    function handleFormSubmit(btn) {
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      if (!nome || !email || !mensagem) {
+        btn.style.background = '#ef4444';
+        btn.textContent = '⚠️ Preencha os campos obrigatórios';
+        setTimeout(() => {
+          btn.style.background = '';
+          btn.textContent = 'Enviar Mensagem →';
+        }, 2500);
+        return;
+      }
+
+      btn.style.background = '#22c55e';
+      btn.textContent = '✓ Mensagem enviada! Entraremos em contacto em breve.';
+      btn.disabled = true;
+
+      // WhatsApp redirect
+      const msg = encodeURIComponent(`Olá Thomas Tech! 👋\n\nNome: ${nome}\nEmail: ${email}\n\nMensagem: ${mensagem}`);
+      setTimeout(() => {
+        window.open(`https://wa.me/258000000000?text=${msg}`, '_blank');
+      }, 1000);
+    }
+
+    // ---- Smooth scroll for nav links ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ---- Page Load Animation ----
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 50);
+    });
+  </script>
+</body>
+
+</html>
